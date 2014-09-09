@@ -7,4 +7,13 @@ class TodoController < Formotion::FormController
     self.initWithForm(self.form)
     self.todo = todo
   end
+
+  def save
+    data = @form.render
+    @todo.from_formotion!(data)
+    @todo.save
+    unless RUBYMOTION_ENV == 'test'
+      self.navigationController.popToRootViewControllerAnimated(true)
+    end
+  end
 end
