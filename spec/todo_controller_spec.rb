@@ -1,4 +1,23 @@
 describe "Todo Controller" do
+  tests TodoController
+
+  before do
+    @now = NSDate.new
+    @todo = Todo.create :name => "Buy Milk",
+                        :details => "We need some Milk",
+                        :due_date => @now
+    @controller = TodoController.new(@todo)
+
+    @form = @controller.instance_variable_get("@form")
+    @name_row = @form.sections[0].rows[0]
+    @details_row = @form.sections[0].rows[1]
+    @due_date_row = @form.sections[0].rows[2]
+    @done_row = @form.sections[0].rows[3]
+  end
+
+  def controller
+    @controller
+  end
 
   it 'exists' do
     Object.const_defined?('TodoController').should.be.true
