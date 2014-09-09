@@ -27,4 +27,8 @@ describe "Todo Model" do
     @todo.done.should.not.be.true
   end
 
+  it 'knows if its overdue' do
+    @todo.should.be.overdue
+  end
+
 end
