@@ -2,6 +2,11 @@ describe "Todos Controller" do
   tests TodosController
 
   before do
+    Todo.delete_all
+    @now = NSDate.new
+    @todo = Todo.create(:name => 'Buy Milk',
+                        :description => 'Get some 1% to rid yourself of the muffin top',
+                        :due_date => @now)
     @table = controller.instance_variable_get("@table")
   end
 
