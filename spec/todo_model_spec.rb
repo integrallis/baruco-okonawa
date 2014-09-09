@@ -1,7 +1,10 @@
 describe "Todo Model" do
 
   before do
-    @todo = Todo.new
+    @now = NSDate.new
+    @todo = Todo.new :name => "Buy Milk",
+                     :description => "We need some Milk",
+                     :due_date => @now
   end
 
   it 'exists' do
@@ -19,4 +22,9 @@ describe "Todo Model" do
     @todo.name = nil
     @todo.should.not.be.valid
   end
+
+  it 'is not done by default' do
+    @todo.done.should.not.be.true
+  end
+
 end
