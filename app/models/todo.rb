@@ -1,6 +1,7 @@
 class Todo
   include MotionModel::Model
   include MotionModel::ArrayModelAdapter
+  include MotionModel::Validatable
 
   columns :name        => :string,
           :details     => :string,
@@ -8,4 +9,6 @@ class Todo
                            :formotion => {:picker_type => :date_time}},
           :done        => {:type => :boolean, :default => false,
                            :formotion => {:type => :switch}}
+
+  validates :name, :presence => true
 end
