@@ -20,6 +20,7 @@ class TodosController < UITableViewController
     cell = UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault,
                                                          reuseIdentifier:nil)
     cell.textLabel.text = @data[indexPath.row].name
+    cell.styleClass = 'table-cell'
     cell
   end
 
