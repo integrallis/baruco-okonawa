@@ -20,3 +20,4 @@ vendor/Pods/.build/
 vendor/Pods/build-iPhoneOS/
 vendor/Pods/build-iPhoneSimulator/
 vendor/Podfile.lock
+.presentation
