@@ -8,11 +8,11 @@ describe "Todo Controller" do
                         :due_date => @now
     @controller = TodoController.new(@todo)
 
-    @form = @controller.instance_variable_get("@form")
-    @name_row = @form.sections[0].rows[0]
-    @details_row = @form.sections[0].rows[1]
-    @due_date_row = @form.sections[0].rows[2]
-    @done_row = @form.sections[0].rows[3]
+    @form = @controller.form
+    @name_row = @form.row(:name)
+    @details_row = @form.row(:details)
+    @due_date_row = @form.row(:due_date)
+    @done_row = @form.row(:done)
   end
 
   def controller
@@ -32,7 +32,7 @@ describe "Todo Controller" do
   end
 
   it 'saves changes made to a Todo' do
-    @name_row.object.row.value = 'Buy 1% Milk'
+    @name_row.value = 'Buy 1% Milk'
     controller.save
 
     saved_todo = Todo.find(@todo.id)

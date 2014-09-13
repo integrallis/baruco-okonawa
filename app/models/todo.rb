@@ -4,12 +4,12 @@ class Todo
   include MotionModel::Validatable
   include MotionModel::Formotion
 
-  columns :name        => :string,
-          :details     => :string,
+  columns :name        => {:type => :string, :formotion => {:key => :name}},
+          :details     => {:type => :string,  :formotion => {:key => :details}},
           :due_date    => {:type => :date,
-                           :formotion => {:picker_type => :date_time}},
+                           :formotion => {:picker_type => :date_time, :key => :due_date}},
           :done        => {:type => :boolean, :default => false,
-                           :formotion => {:type => :switch}}
+                           :formotion => {:type => :switch, :key => :done}}
 
   validates :name, :presence => true
 
